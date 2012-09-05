@@ -1,8 +1,7 @@
 # KillAssistUrT Plugin
 
 __author__  = 'ptitbigorneau'
-__version__ = '1.1.1'
-
+__version__ = '1.1.2'
 
 import b3
 import time
@@ -14,6 +13,10 @@ class KillassisturtPlugin(b3.plugin.Plugin):
     _adminPlugin = None
     _listdamages = []
     _listassits = []
+    _pluginactived = "on"
+    _assistlevel = 1
+    _adminlevel = 100
+    _assistdelay = 10
 
     def onStartup(self):
         
@@ -40,11 +43,30 @@ class KillassisturtPlugin(b3.plugin.Plugin):
 
     def onLoadConfig(self):
 
-        self._assistlevel = self.config.getint('settings', 'assistlevel')
-        self._adminlevel = self.config.get('settings', 'adminlevel')
-        self._pluginactived = self.config.get('settings', 'pluginactived')
-        self._assistdelay = self.config.getint('settings', 'assistdelay')
+        try:
+            self._pluginactived = self.config.get('settings', 'pluginactived')
+        except Exception, err:
+            self.warning("Using default value %s for pluginactived. %s" % (self._pluginactived, err))
+        self.debug('pluginactived : %s' % self._pluginactived)
 
+        try:
+            self._assistlevel = self.config.getint('settings', 'assistlevel')
+        except Exception, err:
+            self.warning("Using default value %s for assistlevel. %s" % (self._assistlevel, err))
+        self.debug('assistlevel : %s' % self._assistlevel)
+
+        try:
+            self._assistdelay = self.config.getint('settings', 'assistdelay')
+        except Exception, err:
+            self.warning("Using default value %s for assistdelay. %s" % (self._assistdelay, err))
+        self.debug('assistdelay : %s' % self._assistdelay)
+
+        try:
+            self._adminlevel = self.config.getint('settings', 'adminlevel')
+        except Exception, err:
+            self.warning("Using default value %s for adminlevel. %s" % (self._adminlevel, err))
+        self.debug('adminlevel : %s' % self._adminlevel)
+ 
     def onEvent(self, event):
         
         if self._pluginactived == 'off':
