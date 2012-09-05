@@ -2,7 +2,7 @@
 # Plugin for B3 (www.bigbrotherbot.com)
 # www.ptitbigorneau.fr
 
-killassisturt B3 plugin (v1.1.1) for Urban Terror
+killassisturt B3 plugin (v1.1.2) for Urban Terror
 
 Installation:
 
