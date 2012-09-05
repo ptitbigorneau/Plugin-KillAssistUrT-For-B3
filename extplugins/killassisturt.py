@@ -1,7 +1,7 @@
 # KillAssistUrT Plugin
 
 __author__  = 'ptitbigorneau'
-__version__ = '1.1'
+__version__ = '1.1.1'
 
 
 import b3
@@ -315,7 +315,7 @@ class KillassisturtPlugin(b3.plugin.Plugin):
                    
                     if int(cidclient) == int(ydata[0]):
                        
-                        self._listdamages.remove(y)
+                        self._listassits.remove(y)
 
     def cmd_assist(self, data, client, cmd=None):
         
