@@ -212,7 +212,7 @@ class KillassisturtPlugin(b3.plugin.Plugin):
                                 self._listdamages.remove(x)
                                 return
 
-                            if gametype != 0:
+                            if gametype != 0 and gametype != 1:
                         
                                 if asclient.team == vclient.team:
 
